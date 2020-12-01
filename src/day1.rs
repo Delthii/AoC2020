@@ -9,7 +9,8 @@ pub fn solution(){
         let cash = line.expect("Expected line").parse::<i32>().expect("Failed parsing int");
         let delta = 2020 - cash;
         if s.contains(&delta){
-            println!("{}", cash*delta)
+            println!("{}", cash*delta);
+            break;
         }else{
             s.insert(cash);
         }
@@ -26,7 +27,7 @@ pub fn solution2(){
 
     numbers.sort();
 
-    for i in 0..numbers.len() {
+    'outer: for i in 0..numbers.len() {
         for j in i + 1..numbers.len() {
             let x = 2020 - numbers[i] - numbers[j];
             let mut k = numbers.len() - 1;
@@ -34,7 +35,8 @@ pub fn solution2(){
                 k -= 1;
             }
             if k > j && x == numbers[k] {
-                println!("{}", numbers[i]*numbers[j]*numbers[k])
+                println!("{}", numbers[i]*numbers[j]*numbers[k]);
+                break 'outer;
             }
         }
     }
