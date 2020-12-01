@@ -3,15 +3,15 @@ use std::io::{prelude::*, BufReader};
 
 pub fn solution(){
     let reader = BufReader::new(File::open("./res/day1.in").expect("Couldn't open file"));
-    let mut lookup: [i8; 2200] = [0; 2200];
+    let mut lookup: [bool; 2200] = [false; 2200];
     for line in reader.lines() {
         let cash = line.expect("Expected line").parse::<i32>().expect("Failed parsing int");
         let delta = 2020 - cash;
-        if lookup[delta as usize] == 1{
+        if lookup[delta as usize]{
             println!("{}", cash*delta);
             break;
         }else{
-            lookup[cash as usize] = 1;
+            lookup[cash as usize] = true;
         }
     }
 }
