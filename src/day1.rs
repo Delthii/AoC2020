@@ -1,18 +1,17 @@
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
-use std::collections::HashSet;
 
 pub fn solution(){
     let reader = BufReader::new(File::open("./res/day1.in").expect("Couldn't open file"));
-    let mut s = HashSet::new();
+    let mut lookup: [i8; 2200] = [0; 2200];
     for line in reader.lines() {
         let cash = line.expect("Expected line").parse::<i32>().expect("Failed parsing int");
         let delta = 2020 - cash;
-        if s.contains(&delta){
+        if lookup[delta as usize] == 1{
             println!("{}", cash*delta);
             break;
         }else{
-            s.insert(cash);
+            lookup[cash as usize] = 1;
         }
     }
 }
