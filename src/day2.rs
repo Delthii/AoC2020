@@ -35,15 +35,12 @@ struct Input{
 
 fn parse(row: &String) -> Input{
     let v: Vec<&str> = row.split(|c| c == ':' || c == ' ' || c == '-').collect();
-    let mi = v[0].parse::<usize>().unwrap(); 
-    let ma = v[1].parse::<usize>().unwrap();
-    let c = v[2].chars().nth(0).unwrap();
-    let pw: Vec<char> = v[4].chars().collect();
+
     Input{
-        min: mi,
-        max: ma,
-        letter: c,
-        password: pw
+        min: v[0].parse::<usize>().unwrap(),
+        max: v[1].parse::<usize>().unwrap(),
+        letter: v[2].chars().nth(0).unwrap(),
+        password: v[4].chars().collect()
     }
 }
 
