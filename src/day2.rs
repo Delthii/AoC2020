@@ -8,7 +8,7 @@ pub fn solution(){
     let valid = rows
         .iter().map(|r| parse(r))
         .map(|inp| (inp.min, inp.max, inp.password.iter().filter(|letter| **letter == inp.letter).count()))
-        .filter(|res| res.2 >= res.0 && res.2 <= res.1)
+        .filter(|(min, max, res)| res >= min && res <= max)
         .count();
 
     println!("{}", valid);
@@ -17,7 +17,7 @@ pub fn solution(){
 pub fn solution2(){
     let reader = BufReader::new(File::open("./res/day2.in").expect("Couldn't open file"));
     let rows: Vec<String> = reader.lines().map(|l| l.expect("Expected line")).collect();
-    
+
     let valid = rows
         .iter().map(|r| parse(r))
         .filter(|inp| (inp.password[inp.min - 1] == inp.letter) ^ (inp.password[inp.max - 1] == inp.letter))
