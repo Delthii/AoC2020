@@ -21,11 +21,10 @@ fn calc_trees(mp: &Vec<Vec<bool>>, right: usize, down : usize) -> i64 {
     let mut y = 0;
     let mut trees = 0;
     while y < mp.len(){
-        if mp[y][x] { 
+        if mp[y][x % mp[0].len()] { 
             trees += 1;
         }
         x += right;
-        x %= mp[0].len();
         y += down;
     }
     return trees;
