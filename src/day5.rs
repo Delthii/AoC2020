@@ -25,8 +25,8 @@ fn make_binary(s: char) -> char{
     }
 }
 
-fn make_tuple(s: &String) -> (isize, isize){
-    (isize::from_str_radix(&s[..7], 2).unwrap(), isize::from_str_radix(&s[7..], 2).unwrap())
+fn make_tuple(s: &String) -> (i32, i32){
+    (i32::from_str_radix(&s[..7], 2).unwrap(), i32::from_str_radix(&s[7..], 2).unwrap())
 }
 
 pub fn solution2(){
