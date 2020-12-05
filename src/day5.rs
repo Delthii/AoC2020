@@ -8,7 +8,8 @@ pub fn solution(){
 
     let res = rows.iter()
         .map(|s| s.chars().map(|c| make_binary(c))
-        .collect::<String>()).map(|s| make_tuple(&s))
+        .collect::<String>())
+        .map(|s| make_tuple(&s))
         .map(|(row, col)| row*8 + col)
         .max()
         .unwrap();
